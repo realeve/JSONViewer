@@ -13,4 +13,21 @@
     margin: 0 20px;
     padding: 20px 0;
   }
+  .err {
+    color: #e23;
+    text-decoration: underline;
+    font-weight: bold;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      border-bottom: 10px solid red;
+      left: -3px;
+      bottom: -13px;
+    }
+  }
 }

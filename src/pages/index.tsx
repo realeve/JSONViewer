@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './index.less';
 import { Input } from 'antd';
 import { ParentNode } from './components/Node';
+import classname from 'classname';
 const { TextArea } = Input;
 
 const getObj = (str: string) => {
@@ -13,6 +14,26 @@ const getObj = (str: string) => {
     obj = e.message;
   }
   return obj;
+};
+
+const ErrComponent = ({ err, val }) => {
+  let errIdx = Number(err.split('at position')[1]);
+  return (
+    <div>
+      {val.split('').map((item, i) => (
+        <span
+          key={i}
+          className={classname({
+            [styles.err]: i == errIdx,
+          })}
+        >
+          {item}
+        </span>
+      ))}
+      <br />
+      <div style={{ textAlign: 'left', color: '#e23' }}>{err}</div>
+    </div>
+  );
 };
 
 export default function() {
@@ -58,7 +79,9 @@ export default function() {
           rows={30}
         />
       </div>
-      <div className={styles.right}>{error || <ParentNode obj={data} />}</div>
+      <div className={styles.right}>
+        {error ? <ErrComponent err={error} val={val} /> : <ParentNode obj={data} />}
+      </div>
     </div>
   );
 }
