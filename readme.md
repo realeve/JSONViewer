@@ -16,3 +16,7 @@ npm run build
 
 
 ```
+
+## gh-pages
+
+在线预览：[https://realeve.github.io/JSONViewer/](https://realeve.github.io/JSONViewer/)
