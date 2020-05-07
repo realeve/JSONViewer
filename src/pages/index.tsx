@@ -19,13 +19,13 @@ export default function() {
   const [val, setVal] = useState(`
   {
     "name": "john",
-    "age": 20,
+    "age": "20",
     "address": {
       "address1": { "country": "china", "city": "beijing", "street": "road1" },
       "address2": { "country": "china", "city": "beijing", "street": "road2" , "username": "张三" }
     },
     "booleanVal":true,
-    "float":2.332
+    "float":"2.332"
   }
   `);
 
