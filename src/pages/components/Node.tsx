@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './index.less';
+
+export const isNumOrFloat = str => /^(-|\+|)\d+(\.)\d+$|^(-|\+|)\d+$/.test(String(str));
+
 /**
  * 判断一个对象是否有子结点
  * @param obj 对象
@@ -22,9 +25,10 @@ export const ObjItem = ({ obj }: { obj: {} }) => (
   <ul className={styles.node}>
     {Object.entries(obj).map(([key, val], idx) => (
       <li key={key}>
-        <span>"{key}":</span>
+        <span>"{key}": </span>
         <span>
-          "{val}"{idx == Object.keys(obj).length - 1 ? '' : ','}
+          {getVal(val)}
+          {idx == Object.keys(obj).length - 1 ? '' : ','}
         </span>
       </li>
     ))}
@@ -36,8 +40,7 @@ export const ParentItem = ({ obj, keyName }) => {
   return (
     <li>
       <div className={styles.alignRow}>
-        "{keyName}":
-        {'{'}
+        "{keyName}": {'{'}
         <div
           className={styles.icon}
           onClick={e => {
@@ -51,6 +54,13 @@ export const ParentItem = ({ obj, keyName }) => {
       {!flag && <ParentNode obj={obj} level={1} />}
     </li>
   );
+};
+
+export const getVal = (val: any) => {
+  if (isNumOrFloat(val) || ['TRUE', 'true', 'FALSE', 'false', true, false].includes(val)) {
+    return String(val);
+  }
+  return `"${val}"`;
 };
 
 export const ParentNode = ({ obj, level = 0 }: { obj: {}; level?: number }) => {
@@ -83,9 +93,10 @@ export const ParentNode = ({ obj, level = 0 }: { obj: {}; level?: number }) => {
           if (typeof val !== 'object') {
             return (
               <li key={key}>
-                <span>"{key}":</span>
+                <span>"{key}": </span>
                 <span>
-                  "{val}"{idx == Object.keys(obj).length - 1 ? '' : ','}
+                  {getVal(val)}
+                  {idx == Object.keys(obj).length - 1 ? '' : ','}
                 </span>
               </li>
             );

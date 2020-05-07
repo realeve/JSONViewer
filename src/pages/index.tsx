@@ -15,7 +15,7 @@ const getObj = (str: string) => {
   return obj;
 };
 
-export default function () {
+export default function() {
   const [val, setVal] = useState(`
   {
     "name": "john",
@@ -23,7 +23,9 @@ export default function () {
     "address": {
       "address1": { "country": "china", "city": "beijing", "street": "road1" },
       "address2": { "country": "china", "city": "beijing", "street": "road2" , "username": "张三" }
-    }
+    },
+    "booleanVal":true,
+    "float":2.332
   }
   `);
 
@@ -47,7 +49,7 @@ export default function () {
       <div className={styles.left}>
         <TextArea
           value={val}
-          onChange={(e) => {
+          onChange={e => {
             setVal(e.target.value);
           }}
           rows={30}
