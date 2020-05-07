@@ -85,7 +85,8 @@ export const ParentNode = ({
     <ul
       className={classnames(styles.node, {
         [styles.arr]: isArr(obj),
-        [styles.lastItem]: isLast,
+        [styles.lastItem]: !flag && isLast,
+        [styles.empty]: flag,
       })}
     >
       {level === 0 && (
