@@ -25,7 +25,9 @@ export default function() {
       "address2": { "country": "china", "city": "beijing", "street": "road2" , "username": "张三" }
     },
     "booleanVal":true,
-    "float":"2.332"
+    "float":"2.332",
+    "arr":[{ "country": "china", "city": "beijing", "street": "road1" },
+    { "country": "china", "city": "beijing", "street": "road1" }]
   }
   `);
 

@@ -17,9 +17,9 @@
     user-select: none;
   }
   &:after {
-    content: '}';
+    content: '},';
     position: absolute;
-    left: 0px;
+    left: -20px;
   }
 
   list-style-type: none;
@@ -30,5 +30,20 @@
 
   li {
     text-align: left;
+  }
+}
+.lastItem {
+  &:after {
+    content: '}';
+    position: absolute;
+    left: -20px;
+  }
+}
+
+.arr {
+  &:after {
+    content: ']';
+    position: absolute;
+    left: -20px;
   }
 }
