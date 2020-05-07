@@ -5,10 +5,8 @@
     "build": "umi build",
     "test": "umi test ./src/pages/components/Node.test.tsx"
   },
-  "dependencies": {
-    "@types/ramda": "^0.27.4",
-    "antd": "^3.19.5",
-    "ramda": "^0.27.0",
+  "dependencies": { 
+    "antd": "^3.19.5", 
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
