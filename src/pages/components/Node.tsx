@@ -1,23 +1,39 @@
 import React, { useState } from 'react';
 import styles from './index.less';
 
-export const isNumOrFloat = str => /^(-|\+|)\d+(\.)\d+$|^(-|\+|)\d+$/.test(String(str));
+export const isNumOrFloat = (str: any) => /^(-|\+|)\d+(\.)\d+$|^(-|\+|)\d+$/.test(String(str));
 
-export const ParentItem = ({ obj, keyName }) => {
+const CollapseBtn = ({
+  keyName,
+  flag,
+  setFlag,
+  obj,
+}: {
+  keyName?: string;
+  flag: boolean;
+  setFlag: (e: boolean) => void;
+  obj: {};
+}) => (
+  <>
+    {keyName && `"${keyName}":`} {'{'}
+    <div
+      className={styles.icon}
+      onClick={e => {
+        setFlag(!flag);
+      }}
+    >
+      {!flag ? '-' : Object.keys(obj).length}
+    </div>
+    {flag && ' ...  }'}
+  </>
+);
+
+export const ParentItem = ({ obj, keyName }: { obj: {}; keyName: string }) => {
   const [flag, setFlag] = useState(false);
   return (
     <li>
       <div className={styles.alignRow}>
-        "{keyName}": {'{'}
-        <div
-          className={styles.icon}
-          onClick={e => {
-            setFlag(!flag);
-          }}
-        >
-          {!flag ? '-' : Object.keys(obj).length}
-        </div>
-        {flag && ' ...  }'}
+        <CollapseBtn {...{ keyName, obj, flag, setFlag }} />
       </div>
       {!flag && <ParentNode obj={obj} level={1} />}
     </li>
@@ -38,16 +54,7 @@ export const ParentNode = ({ obj, level = 0 }: { obj: {}; level?: number }) => {
     <ul className={styles.node}>
       {level === 0 && (
         <li className={styles.alignRow}>
-          {'{'}
-          <div
-            className={styles.icon}
-            onClick={e => {
-              setFlag(!flag);
-            }}
-          >
-            {!flag ? '-' : Object.keys(obj).length}
-          </div>
-          {flag && ' ... '}
+          <CollapseBtn {...{ obj, flag, setFlag }} />
         </li>
       )}
       {!flag &&
