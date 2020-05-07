@@ -1,11 +1,20 @@
 .node {
   position: relative;
-  padding: 20px 0;
-  &:before {
-    content: '{';
-    position: absolute;
-    left: 0px;
-    top: 0px;
+  padding-bottom: 20px;
+  .alignRow {
+    display: flex;
+    flex-direction: row;
+  }
+  .icon {
+    margin: 0 10px;
+    border: 1px solid #aaa;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
   }
   &:after {
     content: '}';

@@ -22,7 +22,7 @@ export default function () {
     "age": 20,
     "address": {
       "address1": { "country": "china", "city": "beijing", "street": "road1" },
-      "address2": { "country": "china", "city": "beijing", "street": "road2" }
+      "address2": { "country": "china", "city": "beijing", "street": "road2" , "username": "张三" }
     }
   }
   `);
