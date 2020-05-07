@@ -26,8 +26,9 @@ export default function() {
     },
     "booleanVal":true,
     "float":"2.332",
-    "arr":[{ "country": "china", "city": "beijing", "street": "road1" },
-    { "country": "china", "city": "beijing", "street": "road1" }]
+    "arr":[{ "country": "china", "city": "beijing", "street": "road1" },null,
+      { "country": "china", "city": "beijing", "street": "road1" },null
+    ]
   }
   `);
 

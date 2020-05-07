@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './index.less';
 import classnames from 'classname';
+import * as R from 'ramda';
 
 export const isNumOrFloat = (str: any) => /^(-|\+|)\d+(\.)\d+$|^(-|\+|)\d+$/.test(String(str));
 export const isArr = (str: any) => Array.isArray(str);
@@ -46,6 +47,10 @@ export const ParentItem = ({
 }) => {
   const [flag, setFlag] = useState(false);
 
+  if (R.isNil(obj)) {
+    return <li>{String(obj) + (isLast ? '' : ',')}</li>;
+  }
+
   return (
     <>
       <li>
@@ -68,7 +73,7 @@ export const getVal = (val: any) => {
 export const ParentNode = ({
   obj,
   level = 0,
-  isLast = false,
+  isLast = true,
 }: {
   obj: {};
   level?: number;
