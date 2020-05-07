@@ -4,6 +4,7 @@ import { IConfig } from 'umi-types';
 const config: IConfig = {
   treeShaking: true,
   publicPath: './',
+  outputPath: './docs',
   history: 'hash',
   hash: true, //添加hash后缀
   exportStatic: false,
